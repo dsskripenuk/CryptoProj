@@ -30,7 +30,12 @@ namespace Crypto_TestProject.ViewModel
             window.GridChange.Children.Clear();
             window.GridChange.Children.Add(new CryptoCurrencyView());
         });
-        
+
+        public ICommand SearchCommand => new DelegateCommand(o =>
+        {
+            window.GridChange.Children.Clear();
+            window.GridChange.Children.Add(new Search());
+        });
 
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

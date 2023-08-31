@@ -22,7 +22,7 @@
                 <RowDefinition Height="180*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" MouseDown="OnMouseLeftButtonDown">
-                
+
                 <RadioButton HorizontalAlignment="Right" Style="{StaticResource MD_MenuButtonTheme}" Margin="0 0 10 0" Command="{Binding CloseWindow}">
                     <materialDesign:PackIcon Kind="Close" Foreground="White" Height="30" Width="30"/>
                 </RadioButton>
@@ -43,7 +43,7 @@
                                 <Button Margin="0,30,0,0" Style="{StaticResource MenuButtonStyle}" MouseLeftButtonDown="Button_Click">
                                     <Image Source="/assets/collage.png" Width="22"/>
                                 </Button>
-                                <Button Style="{StaticResource MenuButtonStyle}">
+                                <Button Style="{StaticResource MenuButtonStyle}" Command="{Binding SearchCommand}">
                                     <StackPanel>
                                         <Image Source="/assets/convert.png" Width="22"/>
                                         <Ellipse Width="5" Height="5" Fill="White" Margin="3"/>
@@ -126,7 +126,7 @@
                                         </TransformGroup>
                                     </Image.RenderTransform>
                                 </Image>
-                                <TextBlock Text="Here you can see cryptocurrencies" FontSize="18" Foreground="#1D212C" Grid.Column="1" Margin="20,12,0,0" FontFamily="PT Sans Caption" VerticalAlignment="Top" Height="24" Grid.RowSpan="2" />
+                                <TextBlock Text="Here you can see cryptocurrencies(only this page is realized)" FontSize="18" Foreground="#1D212C" Grid.Column="1" Margin="20,12,13,0" FontFamily="PT Sans Caption" VerticalAlignment="Top" Height="24" Grid.RowSpan="2" Grid.ColumnSpan="2" />
                             </Grid>
                             <Grid Margin="0 40 0 0" Height="48">
                                 <Grid.ColumnDefinitions>

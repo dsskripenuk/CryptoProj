@@ -49,6 +49,11 @@ namespace Crypto_TestProject.Data.Gecko
 
         public string VolumeMarketCap { get; set; }
 
+        public CoinFormat()
+        {
+
+        }
+
         public CoinFormat(Coin coin)
         {
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;

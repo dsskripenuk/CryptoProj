@@ -78,4 +78,5 @@ D:\TestProj\Crypto_TestProject\obj\Debug\Crypto_TestProject.csproj.CoreCompileIn
 D:\TestProj\Crypto_TestProject\obj\Debug\Crypto_TestProject.csproj.CopyComplete
 D:\TestProj\Crypto_TestProject\obj\Debug\Crypto_TestProject.exe
 D:\TestProj\Crypto_TestProject\obj\Debug\Crypto_TestProject.pdb
-D:\TestProj\Crypto_TestProject\obj\Debug\Theme\Scroll.baml
+D:\TestProj\Crypto_TestProject\obj\Debug\View\Search.g.cs
+D:\TestProj\Crypto_TestProject\obj\Debug\View\Search.baml
