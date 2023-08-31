@@ -10,12 +10,14 @@ using System.Windows;
 using System.Linq;
 using Crypto_TestProject.View;
 using Crypto_TestProject.Data.Gecko;
+using Crypto_TestProject.Data.GeckoTop;
 
 namespace Crypto_TestProject.ViewModel
 {
     class CryptoCurrencyViewModel : INotifyPropertyChanged
     {
         private List<CoinFormat> items;
+        private List<CoinTopFormat> itemsTop;
         public List<CoinFormat> ItemsSource
         {
             get => items;
@@ -23,6 +25,16 @@ namespace Crypto_TestProject.ViewModel
             {
                 items = value;
                 OnPropertyChanged(nameof(ItemsSource));
+            }
+        }
+
+        public List<CoinTopFormat> ItemsSourceTop
+        {
+            get => itemsTop;
+            set
+            {
+                itemsTop = value;
+                OnPropertyChanged(nameof(ItemsSourceTop));
             }
         }
 
@@ -52,7 +64,20 @@ namespace Crypto_TestProject.ViewModel
         {
             CryptoCurrencyModel model = new CryptoCurrencyModel();
             ItemsSource = new List<CoinFormat>();
+            ItemsSourceTop = new List<CoinTopFormat>();
             ItemsSource.AddRange(GetFormat(model.ItemsSource));
+            ItemsSourceTop.AddRange(GetFormatTop(model.topItemSource));
+        }
+
+        public List<CoinTopFormat> GetFormatTop(List<CoinTop> coins)
+        {
+            var result = new List<CoinTopFormat>();
+            foreach (var item in coins)
+            {
+                var formatCoin = new CoinTopFormat(item);
+                result.Add(formatCoin);
+            }
+            return result;
         }
         public List<CoinFormat> GetFormat(List<Coin> coins)
         {

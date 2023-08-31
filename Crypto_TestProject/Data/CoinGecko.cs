@@ -14,14 +14,36 @@ using System.Web;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Media;
+using Crypto_TestProject.Data.GeckoTop;
 
 namespace Crypto_TestProject.Data
 {
     public static class CoinGecko
     {
         public static List<Coin> Coins { get; set; }
-        //public static List
+        public static List<CoinTop> coinTops { get; set; }
         public static List<Item> FullList { get; set; }
+
+        //public static async void UpDateTopList()
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        var URL = new UriBuilder("https://api.coingecko.com/api/v3/search/trending");
+        //        var client = new WebClient();
+        //        client.Headers.Add("Accepts", "application/json");
+        //        client.Headers.Add("User-Agent: Other");
+        //        var js = client.DownloadString(URL.ToString());
+
+        //        var res = JsonConvert.DeserializeObject<List<CoinTop>>(js);
+        //        coinTops = new List<CoinTop>();
+        //        for (var i = 0; i < 100; i++)
+        //        {
+        //            coinTops.Add(res[i]);
+        //        }
+        //        UpDateList();
+        //    });
+        //}
+
         public static async void UpDateList()
         {
             await Task.Run(() =>
@@ -41,6 +63,9 @@ namespace Crypto_TestProject.Data
                 UpDateListFull();
             });
         }
+
+
+
         public static async void UpDateListFull()
         {
             await Task.Run(() =>

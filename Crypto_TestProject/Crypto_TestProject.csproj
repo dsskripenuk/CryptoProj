@@ -93,6 +93,7 @@
     </ApplicationDefinition>
     <Compile Include="Data\CoinGecko.cs" />
     <Compile Include="Data\GeckoTop\CoinTop.cs" />
+    <Compile Include="Data\GeckoTop\CoinTopFormat.cs" />
     <Compile Include="Data\Gecko\CoinFormat.cs" />
     <Compile Include="Data\Gecko\Requests.cs" />
     <Compile Include="Data\Performer.cs" />
@@ -101,6 +102,10 @@
     <Compile Include="Data\Gecko\CurrentPriceUSD.cs" />
     <Compile Include="Model\MainWindowModel.cs" />
     <Page Include="Theme\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\Scroll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +172,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\vector.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\prop.png" />
   </ItemGroup>
@@ -185,6 +192,9 @@
     <Resource Include="Assets\litcoin.png" />
     <Resource Include="Assets\notif.png" />
     <Resource Include="Assets\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\vector-removebg-preview.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />

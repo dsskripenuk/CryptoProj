@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using Crypto_TestProject.Data;
 using Crypto_TestProject.Data.Gecko;
+using Crypto_TestProject.Data.GeckoTop;
 using Newtonsoft.Json;
 
 namespace Crypto_TestProject.Model
@@ -16,6 +17,17 @@ namespace Crypto_TestProject.Model
     {
         //private string API_KEY = "025df3bc-79d6-45d3-83c3-76594a50f8d4";
         private List<Coin> items;
+        private List<CoinTop> topItems;
+
+        public List<CoinTop> topItemSource
+        {
+            get => topItems;
+            set
+            {
+                topItems = value;
+                OnPropertyChanged(nameof(topItems));
+            }
+        }
         public List<Coin> ItemsSource
         {
             get => items;
@@ -29,45 +41,11 @@ namespace Crypto_TestProject.Model
         public CryptoCurrencyModel()
         {
             ItemsSource = new List<Coin>();
-            //var jsonString = APICall_cryptocurrency_listings_latest(countItems);
-            //var res = JsonConvert.DeserializeObject<MainData>(jsonString);
-            //SolidColorBrush percent_change_24h_color;
-            //SolidColorBrush percent_change_7d_color;
+            topItemSource = new List<CoinTop>();
 
-            //for (var i = 0; i < countItems; i++)
-            //{
-                //if (res.data[i].quote.usd.percent_change_24h > 0) percent_change_24h_color = new SolidColorBrush(Color.FromRgb(0, 255, 0));
-                //else percent_change_24h_color = new SolidColorBrush(Color.FromRgb(255, 0, 0));
-
-                //if (res.data[i].quote.usd.percent_change_7d > 0) percent_change_7d_color = new SolidColorBrush(Color.FromRgb(0, 255, 0));
-                //else percent_change_7d_color = new SolidColorBrush(Color.FromRgb(255, 0, 0));
-
-                ItemsSource.AddRange(CoinGecko.Coins);
-                    //res.data[i].cmc_rank.ToString(),
-                    //res.data[i].symbol,
-                    //res.data[i].name,
-                    //"$" + ((double)res.data[i].quote.usd.price).ToString("0.00"),
-                    //((double)res.data[i].circulating_supply).ToString("0.00") + " " + res.data[i].symbol,
-                    //((double)res.data[i].quote.usd.percent_change_24h).ToString("0.00") + "%",
-                    //((double)res.data[i].quote.usd.percent_change_7d).ToString("0.00") + "%",
-                    //"$" + ((double)res.data[i].quote.usd.market_cap).ToString("0,000."),
-                    //percent_change_24h_color,
-                    //percent_change_7d_color,
-                    //res.data[i]));
-            //}
+            ItemsSource.AddRange(CoinGecko.Coins);
+            //topItemSource.AddRange(CoinGecko.coinTops);
         }
-        //public string APICall_cryptocurrency_listings_latest(int countItems)
-        //{
-        //    var URL = new UriBuilder("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
-
-        //    URL.Query = $"start=1&limit={countItems}&convert=USD";
-
-        //    var client = new WebClient();
-        //    client.Headers.Add("X-CMC_PRO_API_KEY", API_KEY);
-        //    client.Headers.Add("Accepts", "application/json");
-        //    return client.DownloadString(URL.ToString());
-
-        //}
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

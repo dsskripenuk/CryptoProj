@@ -3,12 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
              xmlns:local="clr-namespace:Crypto_TestProject.View"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="765" d:DesignWidth="1268">
+    <UserControl.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="90"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+    </UserControl.Resources>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -83,5 +93,144 @@
                 </ListView.ItemContainerStyle>
             </ListView>
         </ScrollViewer>
-    </Grid>
+    </Grid>-->
+
+    <Border Background="#222531" CornerRadius="20">
+        <Grid>
+
+            <Grid x:Name="GridChange" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="501*"/>
+                    <ColumnDefinition Width="767*"/>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="80" BorderThickness="8" BorderBrush="Black" Background="#F5F3FB" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="334"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border CornerRadius="40" Background="#1D212C" Margin="28,25,27,25">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="/assets/diamond.png" Width="32" Margin="0,55"/>
+                                <Button Margin="0,30,0,0" Style="{StaticResource MenuButtonStyle}">
+                                    <Image Source="/assets/collage.png" Width="22"/>
+                                </Button>
+                                <Button Style="{StaticResource MenuButtonStyle}">
+                                    <StackPanel>
+                                        <Image Source="/assets/convert.png" Width="22"/>
+                                        <Ellipse Width="5" Height="5" Fill="White" Margin="3"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Style="{StaticResource MenuButtonStyle}">
+                                    <Image Source="/assets/prop.png" Width="22"/>
+                                </Button>
+                                <Button Style="{StaticResource MenuButtonStyle}">
+                                    <Image Source="/assets/notif.png" Width="22"/>
+                                </Button>
+                                <Button Style="{StaticResource MenuButtonStyle}">
+                                    <Image Source="/assets/profile.png" Width="22"/>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                        <StackPanel Orientation="Vertical" Grid.Column="1" >
+
+                            <TextBlock x:Name="textBlock" TextWrapping="Wrap"  Text="Wallet" FontSize="26" FontFamily="Leelawadee"/>
+
+                            <Separator/>
+
+                            <ScrollViewer  Height="633">
+                                <ListView ItemsSource="{Binding ItemsSource}" Background="Transparent" BorderBrush="{x:Null}" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid x:Name="Gridx" Margin="0,30" Height="48" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Rectangle RadiusX="17" RadiusY="17" MaxHeight="40" Grid.RowSpan="2" Margin="1,5,0,2.5" Fill="White"/>
+                                                <Image Source="{Binding Image}" Width="25" Margin="8,12,7,10" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" >
+                                                    <Image.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform/>
+                                                            <SkewTransform/>
+                                                            <RotateTransform Angle="16.712"/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </Image.RenderTransform>
+                                                </Image>
+                                                <TextBlock x:Name="textBlock2" Grid.Column="1" HorizontalAlignment="Left" Margin="20,0,40,0" TextWrapping="Wrap" Text="{Binding Symbol}" VerticalAlignment="Center" FontSize="18" FontFamily="PT Sans" Foreground="#1D212C"/>
+                                                <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="{Binding Circulating_supply}" VerticalAlignment="Center" FontSize="17" FontFamily="PT Sans Pro Narrow" Foreground="#1D212C"/>
+                                                <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding Name}" VerticalAlignment="Center" FontSize="11" FontFamily="PT Sans" Foreground="#92969F" Margin="20,0,0,0" />
+                                                <TextBlock x:Name="Gridx_Price" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" Text="{Binding Current_price}" VerticalAlignment="Center" FontSize="11" FontFamily="PT Sans" Foreground="#92969F" FontWeight="Bold"/>
+                                            </Grid>
+                                        </DataTemplate>
+
+                                    </ListView.ItemTemplate>
+
+                                </ListView>
+
+
+                            </ScrollViewer>
+                            <Separator Margin="0,0,0,0"/>
+
+
+
+
+                        </StackPanel>
+                        <Grid>
+                        </Grid>
+                        <TextBlock x:Name="textBlock3" Grid.Column="2" HorizontalAlignment="Left" Margin="60,72,0,0" TextWrapping="Wrap" Text="1st Step" VerticalAlignment="Top" Foreground="#92969F" FontSize="11"/>
+                        <TextBlock x:Name="textBlock4" Grid.Column="2" HorizontalAlignment="Left" Margin="60,85,0,0" TextWrapping="Wrap" Text="Select" Foreground="#1D212C" VerticalAlignment="Top" FontSize="18"/>
+                        <Separator Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="135,82,0,0" Width="75" Background="#92969F"/>
+                        <Separator Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="210,82,0,0" Width="75" Background="LightGray"/>
+
+
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="315,72,0,0" TextWrapping="Wrap" Text="2nd Step" VerticalAlignment="Top" Foreground="#92969F" FontSize="11"/>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="315,85,0,0" TextWrapping="Wrap" Text="Confirm" Foreground="#92969F" VerticalAlignment="Top" FontSize="18"/>
+                        <Separator Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="15" Margin="405,82,0,0" Width="145" Background="LightGray"/>
+
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="583,72,0,0" TextWrapping="Wrap" Text="3rd Step" VerticalAlignment="Top" Foreground="#92969F" FontSize="11"/>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="583,85,0,0" TextWrapping="Wrap" Text="Success" Foreground="#92969F" VerticalAlignment="Top" FontSize="18"/>
+
+                        <Rectangle Grid.Column="2" Fill="White" HorizontalAlignment="Center" Height="496" Margin="0,176,0,0" VerticalAlignment="Top" Width="664"/>
+
+
+                        <Image x:Name="image" Grid.Column="2"  HorizontalAlignment="Left" Height="106" Margin="86,206,0,0" VerticalAlignment="Top" Width="107"/>
+
+
+                        <TextBlock x:Name="name_grid" Grid.Column="2" HorizontalAlignment="Left" Margin="217,206,0,0" Text="Bitcoin" VerticalAlignment="Top" Foreground="#FF1D212C" FontSize="30"/>
+                        <TextBlock x:Name="mini_price_grid" Grid.Column="2" HorizontalAlignment="Left" Margin="217,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="PT Sans Narrow" Text="5.04 BTC ($53 578.91)"/>
+
+                        <TextBlock Grid.Column="2" x:Name="price_grid" HorizontalAlignment="Left" Margin="92,407,0,0" Text="3.000000" VerticalAlignment="Top" Foreground="#FF1D212C" FontSize="28" FontFamily="PT Sans Narrow" />
+
+                        <Separator Background="#92969F" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="86,441,0,0" VerticalAlignment="Top" Width="600"/>
+
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="96,389,0,0" Text="Price USD" VerticalAlignment="Top" Foreground="#92969F" FontFamily="PT Sans" />
+
+                        <TextBlock x:Name="symbol_grid" Grid.Column="2" HorizontalAlignment="Left" Margin="583,213,0,0" Text="BTC" VerticalAlignment="Top" Foreground="#FF1D212C" FontSize="38" FontFamily="PT Sans Narrow" />
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="97,455,0,0" Text="19 392.20" VerticalAlignment="Top" Foreground="#92969F" FontFamily="PT Sans Narrow" />
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="248,455,0,0" Text="USD" VerticalAlignment="Top" Foreground="#92969F" FontFamily="PT Sans Narrow" />
+
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="86,586,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#92969F" FontFamily="PT Sans Narrow" Text="Market cap rank"/>
+                        <TextBlock x:Name="market_cap_rank_grid" Grid.Column="2" HorizontalAlignment="Left" Margin="86,608,0,0" TextWrapping="Wrap" Text="1 BTC = 31.47 ETH" VerticalAlignment="Top" Foreground="#FF1D212C" FontSize="17.5" FontFamily="PT Sans Narrow"/>
+
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="260,586,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#92969F" FontFamily="PT Sans Narrow" Text="Total volume"/>
+                        <TextBlock x:Name="total_volume_grid" Grid.Column="2" HorizontalAlignment="Left" Margin="260,608,0,0" TextWrapping="Wrap" Text="12.938539 BNB" VerticalAlignment="Top" Foreground="#FF1D212C" FontSize="17.5" FontFamily="PT Sans Narrow"/>
+
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="424,586,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#92969F" FontFamily="PT Sans Narrow" Text="24h Percent change"/>
+                        <TextBlock x:Name="percent_change_24h_grid"  Grid.Column="2" HorizontalAlignment="Left" Margin="424,608,0,0" TextWrapping="Wrap" Text="12.938539 BNB" VerticalAlignment="Top" Foreground="#FF1D212C" FontSize="17.5" FontFamily="PT Sans Narrow"/>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+
 </UserControl>

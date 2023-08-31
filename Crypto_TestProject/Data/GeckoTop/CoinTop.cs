@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Crypto_TestProject.Data.GeckoTop
 {
-    internal class CoinTop
+    public class CoinTop
     {
         [JsonProperty("id")]
         public string id { get; set; }
@@ -45,6 +45,6 @@ namespace Crypto_TestProject.Data.GeckoTop
 
 
 
-        
+
     }
 }
